@@ -1,0 +1,113 @@
+{
+    "resultcode": "200",
+    "reason": "查询成功",
+    "result": {
+        "sk": {
+            "temp": "33",
+            "wind_direction": "东风",
+            "wind_strength": "2级",
+            "humidity": "54%",
+            "time": "12:18"
+        },
+        "today": {
+            "temperature": "25℃~34℃",
+            "weather": "晴转多云",
+            "weather_id": {
+                "fa": "00",
+                "fb": "01"
+            },
+            "wind": "北风微风",
+            "week": "星期一",
+            "city": "济南",
+            "date_y": "2017年08月07日",
+            "dressing_index": "炎热",
+            "dressing_advice": "天气炎热，建议着短衫、短裙、短裤、薄型T恤衫等清凉夏季服装。",
+            "uv_index": "强",
+            "comfort_index": "",
+            "wash_index": "较适宜",
+            "travel_index": "较适宜",
+            "exercise_index": "较适宜",
+            "drying_index": ""
+        },
+        "future": [
+            {
+                "temperature": "25℃~34℃",
+                "weather": "晴转多云",
+                "weather_id": {
+                    "fa": "00",
+                    "fb": "01"
+                },
+                "wind": "北风微风",
+                "week": "星期一",
+                "date": "20170807"
+            },
+            {
+                "temperature": "24℃~34℃",
+                "weather": "多云转晴",
+                "weather_id": {
+                    "fa": "01",
+                    "fb": "00"
+                },
+                "wind": "北风微风",
+                "week": "星期二",
+                "date": "20170808"
+            },
+            {
+                "temperature": "23℃~33℃",
+                "weather": "多云转雷阵雨",
+                "weather_id": {
+                    "fa": "01",
+                    "fb": "04"
+                },
+                "wind": "南风微风",
+                "week": "星期三",
+                "date": "20170809"
+            },
+            {
+                "temperature": "25℃~32℃",
+                "weather": "雷阵雨转多云",
+                "weather_id": {
+                    "fa": "04",
+                    "fb": "01"
+                },
+                "wind": "南风微风",
+                "week": "星期四",
+                "date": "20170810"
+            },
+            {
+                "temperature": "26℃~35℃",
+                "weather": "晴转雷阵雨",
+                "weather_id": {
+                    "fa": "00",
+                    "fb": "04"
+                },
+                "wind": "北风微风",
+                "week": "星期五",
+                "date": "20170811"
+            },
+            {
+                "temperature": "24℃~34℃",
+                "weather": "多云转晴",
+                "weather_id": {
+                    "fa": "01",
+                    "fb": "00"
+                },
+                "wind": "北风微风",
+                "week": "星期六",
+                "date": "20170812"
+            },
+            {
+                "temperature": "23℃~33℃",
+                "weather": "多云转雷阵雨",
+                "weather_id": {
+                    "fa": "01",
+                    "fb": "04"
+                },
+                "wind": "南风微风",
+                "week": "星期日",
+                "date": "20170813"
+            }
+        ]
+    },
+    "error_code": 0
+}

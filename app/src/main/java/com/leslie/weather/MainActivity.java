@@ -7,11 +7,14 @@ import android.os.Message;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.leslie.weather.util.ParseUtil;
+
 import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,15 +33,22 @@ public class MainActivity extends Activity {
     private Request request;
     //----------------------------------------------------------------------------------------------
     private static final int WEATHER_DATA_SUCCESS = 1001;
+    //这个接口返回的是 XML 类型数据，解析前要先转换成 JSON 类型数据
+    private static final String FREE_WEATHER_API_ADDRESS = "http://wthrcdn.etouch.cn/WeatherApi?city=济南";
+    //这个接口返回的是 JSON 类型数据，是聚合数据提供的接口，但是免费使用只有 500 次
+    private static final String JUHE_WEATHER_API_ADDRESS = "http://v.juhe.cn/weather/index?format=2&" +
+            "cityname=%E8%8B%8F%E5%B7%9E&key=5bbdd4c61885e51fc50c58347601c5f4";
     //----------------------------------------------------------------------------------------------
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case WEATHER_DATA_SUCCESS:
-                    String xmlData = (String) msg.obj;
-                    tvWeatherInfo.setText(xmlData);
-                    //解析 XML 数据
+                    String data = (String) msg.obj;
+                    XmlToJson xmlToJson = new XmlToJson.Builder(data).build();
+                    String jsonData = xmlToJson.toString();
+                    tvWeatherInfo.setText(jsonData);
+                    ParseUtil.parseJsonData(jsonData);
                     break;
             }
         }
@@ -63,10 +73,11 @@ public class MainActivity extends Activity {
         }).start();
 
     }
+
     private void getDataByOKHttp() {
         try {
             client = new OkHttpClient();
-            request = new Request.Builder().url("http://wthrcdn.etouch.cn/WeatherApi?city=济南").build();
+            request = new Request.Builder().url(FREE_WEATHER_API_ADDRESS).build();
             Response response = client.newCall(request).execute();
             String responseData = response.body().string();
             Message message = mHandler.obtainMessage();
