@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="colorGrey0">#bebebe</color>
     <color name="colorGrey1">#A000</color>
     <color name="colorGrey2">#6000</color>
     <color name="colorGrey3">#3000</color>
@@ -21,6 +22,7 @@
     <color name="colorBlue4">#a9c7ff</color>
     <color name="colorBlue5">#477fe5</color>
     <color name="colorBlue6">#2a66d4</color>
+    <color name="colorBlue7">#99a3d8</color>
     <color name="colorGreen">#0f0</color>
     <color name="colorGreen1">#2fac71</color>
     <color name="colorGreen2">#75dbaa</color>
@@ -36,4 +38,6 @@
     <color name="colorWhiteBlue">#300f</color>
     <color name="colorGreenDark">#9911402a</color>
     <color name="colorGreenDark2">#238155</color>
+    <color name="dodgerblue">#1E90FF</color>
+
 </resources>

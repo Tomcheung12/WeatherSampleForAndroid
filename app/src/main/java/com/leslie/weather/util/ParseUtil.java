@@ -3,7 +3,7 @@ package com.leslie.weather.util;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.leslie.weather.bean.WeatherData;
+import com.leslie.weather.bean.WeatherResponse;
 import com.leslie.weather.bean.WeatherDataJuhe;
 
 import java.util.List;
@@ -21,11 +21,11 @@ public class ParseUtil {
      *
      * @param jsonData
      */
-    public static void parseJsonData(String jsonData) {
+    public static WeatherResponse parseJsonData(String jsonData) {
         Gson gson = new Gson();
-        WeatherData weatherData = gson.fromJson(jsonData, WeatherData.class);
+        WeatherResponse weatherData = gson.fromJson(jsonData, WeatherResponse.class);
         //1.获取内部类 RespBean，然后获取其的属性值
-        WeatherData.RespBean resp = weatherData.getResp();
+        WeatherResponse.RespBean resp = weatherData.getResp();
         String city = resp.getCity();
         String fengli = resp.getFengli();
         String fengxiang = resp.getFengxiang();
@@ -47,16 +47,16 @@ public class ParseUtil {
         Log.d(TAG, "handleMessage: ---日落2：" + sunset_2);
         Log.d(TAG, "handleMessage: ---更新时间：" + updatetime);
         //获取内部类 指数
-        WeatherData.RespBean.ZhishusBean zhishus = resp.getZhishus();
-        List<WeatherData.RespBean.ZhishusBean.ZhishuBean> zhishu = zhishus.getZhishu();
-        for (WeatherData.RespBean.ZhishusBean.ZhishuBean zhishuBean : zhishu) {
+        WeatherResponse.RespBean.ZhishusBean zhishus = resp.getZhishus();
+        List<WeatherResponse.RespBean.ZhishusBean.ZhishuBean> zhishu = zhishus.getZhishu();
+        for (WeatherResponse.RespBean.ZhishusBean.ZhishuBean zhishuBean : zhishu) {
             String name = zhishuBean.getName();
             String detail = zhishuBean.getDetail();
             String value = zhishuBean.getValue();
             Log.d(TAG, "handleMessage: ---指数：" + name + "---详情：" + detail + "---值：" + value);
         }
         //获取内部类 RespBean 的内部类 EnvironmentBean，并且获取其属性值
-        WeatherData.RespBean.EnvironmentBean environment = resp.getEnvironment();
+        WeatherResponse.RespBean.EnvironmentBean environment = resp.getEnvironment();
         int aqi = environment.getAqi();
         int co = environment.getCo();
         String majorPollutants = environment.getMajorPollutants();
@@ -79,8 +79,8 @@ public class ParseUtil {
         Log.d(TAG, "handleMessage: 建议：" + suggest);
 
 
-        WeatherData.RespBean.ForecastBean forecast = resp.getForecast();
-        List<WeatherData.RespBean.ForecastBean.WeatherBean> weather = forecast.getWeather();
+        WeatherResponse.RespBean.ForecastBean forecast = resp.getForecast();
+        List<WeatherResponse.RespBean.ForecastBean.WeatherBean> weather = forecast.getWeather();
         String data;
         String high;
         String low;
@@ -90,17 +90,17 @@ public class ParseUtil {
         String nightFengli;
         String nightFengxiang;
         String nightType;
-        for (WeatherData.RespBean.ForecastBean.WeatherBean weatherBean : weather) {
+        for (WeatherResponse.RespBean.ForecastBean.WeatherBean weatherBean : weather) {
             data = weatherBean.getDate();
             high = weatherBean.getHigh();
             low = weatherBean.getLow();
             //白天情况
-            WeatherData.RespBean.ForecastBean.WeatherBean.DayBean day = weatherBean.getDay();
+            WeatherResponse.RespBean.ForecastBean.WeatherBean.DayBean day = weatherBean.getDay();
             fengliDay = day.getFengli();
             fengxiangDay = day.getFengxiang();
             typeDay = day.getType();
             //夜间情况
-            WeatherData.RespBean.ForecastBean.WeatherBean.NightBean night = weatherBean.getNight();
+            WeatherResponse.RespBean.ForecastBean.WeatherBean.NightBean night = weatherBean.getNight();
             nightFengli = night.getFengli();
             nightFengxiang = night.getFengxiang();
             nightType = night.getType();
@@ -115,6 +115,7 @@ public class ParseUtil {
             Log.d(TAG, "handleMessage: 夜间风向：" + nightFengxiang);
             Log.d(TAG, "handleMessage: 夜间类型：" + nightType);
         }
+        return weatherData;
     }
 
     /**
