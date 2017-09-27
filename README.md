@@ -4,7 +4,7 @@
 - 抵制那些加广告的天气预报应用
 
 #### 效果图
-![首页](https://github.com/kamaihamaiha/WeatherSampleForAndroid/raw/master/app/display/capture_1.png)
+![首页](https://github.com/kamaihamaiha/WeatherSampleForAndroid/raw/master/app/display/cap1.png)
 #### 购买数据
 - 聚合数据：天气预报接口。
 - appkey：5bbdd4c61885e51fc50c58347601c5f4
